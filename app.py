@@ -36,12 +36,12 @@ text_muted = config.get("theme", {}).get("text_muted", "#5D6D7E")
 st.markdown(f"""
     <style>
     .main-header {{
-        font-size: 3rem;
+        font-size: 4rem;
         font-weight: bold;
         color: {primary_color};
         text-align: center;
-        padding: 1rem 0;
-        margin-bottom: 1rem;
+        padding: 1.5rem 0;
+        margin-bottom: 1.5rem;
     }}
 
     .section-header {{
@@ -260,8 +260,8 @@ st.markdown(f"""
     /* === МОБІЛЬНА АДАПТАЦІЯ === */
     @media only screen and (max-width: 768px) {{
         .main-header {{
-            font-size: 2rem !important;
-            padding: 0.5rem 0 !important;
+            font-size: 2.5rem !important;
+            padding: 1rem 0 !important;
         }}
 
         .section-header {{
@@ -297,7 +297,7 @@ st.markdown(f"""
     /* Дуже маленькі екрани */
     @media only screen and (max-width: 480px) {{
         .main-header {{
-            font-size: 1.5rem !important;
+            font-size: 2rem !important;
         }}
 
         .section-header {{
