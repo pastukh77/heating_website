@@ -91,6 +91,34 @@ st.markdown(f"""
         box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }}
 
+    /* Навігаційні картки */
+    .nav-card {{
+        background: linear-gradient(135deg, {bg_light} 0%, white 100%);
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 2px solid {bg_light};
+        transition: all 0.3s ease;
+        height: 100%;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }}
+
+    .nav-card:hover {{
+        border-color: {primary_color};
+        box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
+        transform: translateY(-5px);
+    }}
+
+    .nav-card h3 {{
+        color: {primary_color};
+        margin-bottom: 0.5rem;
+    }}
+
+    .nav-card p {{
+        color: {text_muted};
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }}
+
     .photo-caption {{
         text-align: center;
         color: {text_muted};
@@ -292,6 +320,19 @@ st.markdown(f"""
             padding: 0.8rem 1rem !important;
             font-size: 1rem !important;
         }}
+
+        /* Навігаційні картки на планшетах */
+        .nav-card {{
+            padding: 1rem !important;
+        }}
+
+        .nav-card h3 {{
+            font-size: 1.2rem !important;
+        }}
+
+        .nav-card p {{
+            font-size: 0.85rem !important;
+        }}
     }}
 
     /* Дуже маленькі екрани */
@@ -302,6 +343,20 @@ st.markdown(f"""
 
         .section-header {{
             font-size: 1.3rem !important;
+        }}
+
+        /* Навігаційні картки на телефонах */
+        .nav-card {{
+            padding: 0.8rem !important;
+            margin-bottom: 1rem !important;
+        }}
+
+        .nav-card h3 {{
+            font-size: 1.1rem !important;
+        }}
+
+        .nav-card p {{
+            font-size: 0.8rem !important;
         }}
 
         [data-testid="stSidebar"] {{
@@ -372,14 +427,27 @@ else:
         "📞 Контакти": "Контакти"
     }
 
-page = st.sidebar.radio(
+# Ініціалізуємо поточну сторінку в session_state
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = "Головна"
+
+# Отримуємо вибір з radio
+selected_menu = st.sidebar.radio(
     "Оберіть розділ:",
     list(menu_items.keys()),
-    label_visibility="collapsed"
+    index=list(menu_items.values()).index(st.session_state.current_page) if st.session_state.current_page in menu_items.values() else 0,
+    label_visibility="collapsed",
+    key="sidebar_menu"
 )
 
-# Отримуємо назву сторінки без іконки
-page = menu_items[page]
+# Оновлюємо поточну сторінку при зміні radio
+selected_page = menu_items[selected_menu]
+if selected_page != st.session_state.current_page:
+    st.session_state.current_page = selected_page
+    st.rerun()
+
+# Отримуємо назву сторінки
+page = st.session_state.current_page
 
 # Завантаження контактів для sidebar з конфігу
 contacts = config.get("contacts", {})
@@ -430,6 +498,36 @@ if page == "Головна":
 
         features_text = "\n".join([f"        - ✅ {item}" for item in features])
         st.markdown(features_text)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    # === КНОПКИ ШВИДКОЇ НАВІГАЦІЇ ===
+    # st.markdown('<h2 class="section-header">🔗 Швидкий перехід</h2>', unsafe_allow_html=True)
+
+    # Створюємо три колонки для кнопок
+    btn_col1, btn_col2, btn_col3 = st.columns(3)
+
+    with btn_col1:
+        st.markdown("### 📄 Документи")
+        st.markdown("Перегляньте наші офіційні документи та ліцензії")
+        if st.button("Переглянути документи", key="nav_docs", use_container_width=True, type="primary"):
+            st.session_state.current_page = "Документи"
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with btn_col2:
+        st.markdown("### 📸 Фотогалерея")
+        st.markdown("Дивіться фотографії нашого обладнання та об'єктів")
+        if st.button("Відкрити галерею", key="nav_photos", use_container_width=True, type="primary"):
+            st.session_state.current_page = "Фотогалерея"
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with btn_col3:
+        st.markdown("### 📞 Контакти")
+        st.markdown("Зв'яжіться з нами для отримання інформації")
+        if st.button("Наші контакти", key="nav_contacts", use_container_width=True, type="primary"):
+            st.session_state.current_page = "Контакти"
+            st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================== ДОКУМЕНТИ ====================
