@@ -468,37 +468,14 @@ if sidebar_phone or sidebar_email:
 if page == "Головна":
     st.markdown('<h2 class="section-header">Про нас</h2>', unsafe_allow_html=True)
 
-    # Створення двох колонок
-    col1, col2 = st.columns([2, 1])
+    # Відображення інформації з конфігу
+    company_info = config.get("company", {})
+    display_name = company_info.get("name", "Назва підприємства")
+    company_description = company_info.get("description", "Опис підприємства буде додано пізніше.")
 
-    with col1:
-        # Відображення інформації з конфігу
-        # st.markdown('<div class="info-box">', unsafe_allow_html=True)
+    st.markdown(f"### {display_name}")
+    st.markdown(company_description)
 
-        company_info = config.get("company", {})
-        display_name = company_info.get("name", "Назва підприємства")
-        company_description = company_info.get("description", "Опис підприємства буде додано пізніше.")
-
-        st.markdown(f"### {display_name}")
-        st.markdown(company_description)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    with col2:
-        # st.markdown('<div class="info-box">', unsafe_allow_html=True)
-        st.markdown("### 📊 Наші переваги")
-
-        # Отримання переваг з конфігу
-        features = config.get("features", {}).get("items", [
-            "Понад 35 років досвіду",
-            "Сучасне обладнання",
-            "Кваліфікований персонал",
-            "Цілодобова підтримка",
-            "Доступні тарифи"
-        ])
-
-        features_text = "\n".join([f"        - ✅ {item}" for item in features])
-        st.markdown(features_text)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     # === КНОПКИ ШВИДКОЇ НАВІГАЦІЇ ===
     # st.markdown('<h2 class="section-header">🔗 Швидкий перехід</h2>', unsafe_allow_html=True)
@@ -536,52 +513,124 @@ elif page == "Документи":
 
     # Отримання документів з конфігу
     docs = config.get("documents", {})
-    license_doc = docs.get("license", {})
+    license1_doc = docs.get("license1", {})
+    license2_doc = docs.get("license2", {})
+    license3_doc = docs.get("license3", {})
     tariff_doc = docs.get("tariff", {})
 
     max_pdf_size = config.get("settings", {}).get("max_pdf_size_mb", 10)
 
     # Створення вкладок для різних документів
-    tab1, tab2 = st.tabs([
-        license_doc.get("title", "Ліцензія на виробництво теплової енергії"),
+    tab1, tab2, tab3, tab4 = st.tabs([
+        license1_doc.get("title", "Ліцензія 1"),
+        license2_doc.get("title", "Ліцензія 2"),
+        license3_doc.get("title", "Ліцензія 3"),
         tariff_doc.get("title", "Тарифи на теплопостачання")
     ])
 
     with tab1:
-        st.markdown(f"{license_doc.get('full_title', 'Ліцензія на право провадження господарської діяльності з виробництва теплової енергії')}")
+        st.markdown(f"{license1_doc.get('full_title', 'Ліцензія 1')}")
 
         # Відображення документа
-        license_path = os.path.join(
-            license_doc.get("folder", "documents"),
-            license_doc.get("filename", "Ліцензія.pdf")
+        license1_path = os.path.join(
+            license1_doc.get("folder", "documents"),
+            license1_doc.get("filename", "Ліцензія1.pdf")
         )
 
-        if os.path.exists(license_path):
+        if os.path.exists(license1_path):
             # Читаємо файл один раз
-            with open(license_path, "rb") as file:
-                license_pdf_data = file.read()
+            with open(license1_path, "rb") as file:
+                license1_pdf_data = file.read()
 
             # Кнопка завантаження
             st.download_button(
-                label="⬇️ Завантажити ліцензію",
-                data=license_pdf_data,
-                file_name="Ліцензія.pdf",
+                label="⬇️ Завантажити документ",
+                data=license1_pdf_data,
+                file_name=license1_doc.get("filename", "Ліцензія1.pdf"),
                 mime="application/pdf",
-                key="download_license"
+                key="download_license1"
             )
 
             st.markdown("#### 📄 Перегляд документа:")
 
             # Перевіряємо розмір файлу
-            file_size_mb = len(license_pdf_data) / (1024 * 1024)
+            file_size_mb = len(license1_pdf_data) / (1024 * 1024)
             if file_size_mb > max_pdf_size:
                 st.warning(f"📄 Файл занадто великий ({file_size_mb:.1f} MB) для перегляду в браузері. Будь ласка, завантажте його для перегляду.")
             else:
-                display_pdf(pdf_data=license_pdf_data)
+                display_pdf(pdf_data=license1_pdf_data)
         else:
             st.warning("📄 Документ не знайдено.")
 
     with tab2:
+        st.markdown(f"{license2_doc.get('full_title', 'Ліцензія 2')}")
+
+        # Відображення документа
+        license2_path = os.path.join(
+            license2_doc.get("folder", "documents"),
+            license2_doc.get("filename", "Ліцензія2.pdf")
+        )
+
+        if os.path.exists(license2_path):
+            # Читаємо файл один раз
+            with open(license2_path, "rb") as file:
+                license2_pdf_data = file.read()
+
+            # Кнопка завантаження
+            st.download_button(
+                label="⬇️ Завантажити документ",
+                data=license2_pdf_data,
+                file_name=license2_doc.get("filename", "Ліцензія2.pdf"),
+                mime="application/pdf",
+                key="download_license2"
+            )
+
+            st.markdown("#### 📄 Перегляд документа:")
+
+            # Перевіряємо розмір файлу
+            file_size_mb = len(license2_pdf_data) / (1024 * 1024)
+            if file_size_mb > max_pdf_size:
+                st.warning(f"📄 Файл занадто великий ({file_size_mb:.1f} MB) для перегляду в браузері. Будь ласка, завантажте його для перегляду.")
+            else:
+                display_pdf(pdf_data=license2_pdf_data)
+        else:
+            st.warning("📄 Документ не знайдено.")
+
+    with tab3:
+        st.markdown(f"{license3_doc.get('full_title', 'Ліцензія 3')}")
+
+        # Відображення документа
+        license3_path = os.path.join(
+            license3_doc.get("folder", "documents"),
+            license3_doc.get("filename", "Ліцензія3.pdf")
+        )
+
+        if os.path.exists(license3_path):
+            # Читаємо файл один раз
+            with open(license3_path, "rb") as file:
+                license3_pdf_data = file.read()
+
+            # Кнопка завантаження
+            st.download_button(
+                label="⬇️ Завантажити документ",
+                data=license3_pdf_data,
+                file_name=license3_doc.get("filename", "Ліцензія3.pdf"),
+                mime="application/pdf",
+                key="download_license3"
+            )
+
+            st.markdown("#### 📄 Перегляд документа:")
+
+            # Перевіряємо розмір файлу
+            file_size_mb = len(license3_pdf_data) / (1024 * 1024)
+            if file_size_mb > max_pdf_size:
+                st.warning(f"📄 Файл занадто великий ({file_size_mb:.1f} MB) для перегляду в браузері. Будь ласка, завантажте його для перегляду.")
+            else:
+                display_pdf(pdf_data=license3_pdf_data)
+        else:
+            st.warning("📄 Документ не знайдено.")
+
+    with tab4:
         st.markdown(f"{tariff_doc.get('full_title', 'Тариф на послуги з теплопостачання')}")
 
         # Відображення документа
@@ -599,7 +648,7 @@ elif page == "Документи":
             st.download_button(
                 label="⬇️ Завантажити тариф",
                 data=tariff_pdf_data,
-                file_name="Тариф.pdf",
+                file_name=tariff_doc.get("filename", "Тариф.pdf"),
                 mime="application/pdf",
                 key="download_tariff"
             )
@@ -648,24 +697,19 @@ elif page == "Контакти":
     contact_phone = contacts_info.get("phone", "Телефон буде додано")
     contact_email = contacts_info.get("email", "Email буде додано")
     contact_address = contacts_info.get("address", "Адреса буде додана")
-    contact_hours = contacts_info.get("working_hours", "Години роботи будуть додані")
 
     st.markdown(f"""
     <div class="contact-item">
         <span class="contact-icon">📞</span>
-        <strong>Телефон:</strong> {contact_phone}
+        <strong>Телефон:</strong>&nbsp;{contact_phone}
     </div>
     <div class="contact-item">
         <span class="contact-icon">📧</span>
-        <strong>Email:</strong> {contact_email}
+        <strong>Email:</strong>&nbsp;{contact_email}
     </div>
     <div class="contact-item">
         <span class="contact-icon">📍</span>
-        <strong>Адреса:</strong> {contact_address}
-    </div>
-    <div class="contact-item">
-        <span class="contact-icon">🕐</span>
-        <strong>Години роботи:</strong> {contact_hours}
+        <strong>Адреса:</strong>&nbsp;{contact_address}
     </div>
     """, unsafe_allow_html=True)
 
