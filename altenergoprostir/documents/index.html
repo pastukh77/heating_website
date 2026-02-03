@@ -6,19 +6,21 @@
     <title>Документи - ТОВ «АЛЬТЕНЕРГОПРОСТІР»</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        :root { --primary-color: #FF6B35; }
+        :root { --primary-color: #FF6B35; --secondary-color: #e55a2b; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c42 100%); }
-        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
         .btn { background-color: var(--primary-color); }
         .btn:hover { background-color: #e55a2b; }
-        .tab-btn.active { background-color: var(--primary-color); }
+        .tab-btn.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+        .info-box { border-left-color: var(--primary-color); }
+        
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header ">
         <h1>ТОВ «АЛЬТЕНЕРГОПРОСТІР»</h1>
     </header>
-    <nav class="nav">
+    <nav class="nav ">
         <ul class="nav-list">
             <li class="nav-item"><a href="/altenergoprostir" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
             <li class="nav-item"><a href="/altenergoprostir/documents" class="nav-link active"><span class="nav-icon">📄</span>Документи</a></li>
@@ -26,14 +28,14 @@
             <li class="nav-item"><a href="/altenergoprostir/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
         </ul>
     </nav>
-    <main class="main">
+    <main class="main ">
         <div class="container">
             <h2 class="section-header">📑 Офіційні документи</h2>
             <div class="tabs">
                 <button class="tab-btn active" onclick="openTab(event, 'license1')">Ліцензія на виробництво</button>
                 <button class="tab-btn" onclick="openTab(event, 'license2')">Ліцензія на постачання</button>
                 <button class="tab-btn" onclick="openTab(event, 'license3')">Ліцензія на транспортування</button>
-                <button class="tab-btn" onclick="openTab(event, 'tariff')">Тарифи на теплопостачання</button>
+                <button class="tab-btn" onclick="openTab(event, 'tariff')">Тариф на теплопостачання</button>
             </div>
 
             <div id="license1" class="tab-content active">
@@ -71,12 +73,12 @@
 
             <div id="tariff" class="tab-content">
                 <div class="document-section">
-                    <h4>Тариф на послуги з теплопостачання</h4>
+                    <h4>Про встановлення тарифів на постачання теплової енергії з альтернативних джерел</h4>
                     <div class="document-actions">
-                        <a href="/altenergoprostir/docs/тариф_АЕП.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                        <a href="/altenergoprostir/docs/тариф.pdf" class="btn" download>⬇️ Завантажити документ</a>
                     </div>
                     <h4>📄 Перегляд документа:</h4>
-                    <embed src="/altenergoprostir/docs/тариф_АЕП.pdf" class="pdf-viewer" type="application/pdf">
+                    <embed src="/altenergoprostir/docs/тариф.pdf" class="pdf-viewer" type="application/pdf">
                 </div>
             </div>
         </div>

@@ -6,18 +6,32 @@
     <title>Фотогалерея - ТОВ «ЗБАРАЖ ТЕПЛО»</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        :root { --primary-color: #4CAF50; }
+        :root { --primary-color: #4CAF50; --secondary-color: #388E3C; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, #66BB6A 100%); }
-        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
         .btn { background-color: var(--primary-color); }
         .btn:hover { background-color: #388E3C; }
+        .info-box { border-left-color: var(--primary-color); }
+        
+        .header--minimal { background: var(--primary-color); padding: 1rem 0; }
+        .header--minimal h1 { font-size: 1.8rem; font-weight: 400; }
+        .nav--minimal { border-bottom: 1px solid #eee; }
+        .nav--minimal .nav-link { border-bottom: none; font-weight: 400; }
+        .nav--minimal .nav-link:hover, .nav--minimal .nav-link.active { background: none; color: var(--primary-color); }
+        .nav--minimal .nav-icon { display: none; }
+        .info-box { background: #fff; border: 1px solid #eee; border-left: 3px solid var(--primary-color); border-radius: 0; }
+        .nav-card { border-radius: 0; border: 1px solid #eee; box-shadow: none; }
+        .nav-card:hover { border-color: var(--primary-color); transform: none; box-shadow: none; }
+        .section-header { background: none; color: var(--text-color); font-weight: 400; border-bottom: 2px solid var(--primary-color); border-radius: 0; padding: 0.5rem 0; }
+        .btn { border-radius: 0; }
+        
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header header--minimal">
         <h1>ТОВ «ЗБАРАЖ ТЕПЛО»</h1>
     </header>
-    <nav class="nav">
+    <nav class="nav nav--minimal">
         <ul class="nav-list">
             <li class="nav-item"><a href="/zbarazh-teplo" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
             <li class="nav-item"><a href="/zbarazh-teplo/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
@@ -25,13 +39,11 @@
             <li class="nav-item"><a href="/zbarazh-teplo/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
         </ul>
     </nav>
-    <main class="main">
+    <main class="main ">
         <div class="container">
             <h2 class="section-header">📸 Фотогалерея</h2>
             <div class="gallery">
-                <div class="gallery-item"><img src="/zbarazh-teplo/photos/photo1.jpg" alt="photo1.jpg" loading="lazy"></div>
-                <div class="gallery-item"><img src="/zbarazh-teplo/photos/photo2.jpg" alt="photo2.jpg" loading="lazy"></div>
-                <div class="gallery-item"><img src="/zbarazh-teplo/photos/photo3.jpg" alt="photo3.jpg" loading="lazy"></div>
+                <div class="gallery-item"><img src="/zbarazh-teplo/photos/Zbarazh1.jpg" alt="Zbarazh1.jpg" loading="lazy"></div>
             </div>
         </div>
     </main>

@@ -6,18 +6,20 @@
     <title>Фотогалерея - ТОВ «АЛЬТЕНЕРГОПРОСТІР»</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        :root { --primary-color: #FF6B35; }
+        :root { --primary-color: #FF6B35; --secondary-color: #e55a2b; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c42 100%); }
-        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
         .btn { background-color: var(--primary-color); }
         .btn:hover { background-color: #e55a2b; }
+        .info-box { border-left-color: var(--primary-color); }
+        
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header ">
         <h1>ТОВ «АЛЬТЕНЕРГОПРОСТІР»</h1>
     </header>
-    <nav class="nav">
+    <nav class="nav ">
         <ul class="nav-list">
             <li class="nav-item"><a href="/altenergoprostir" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
             <li class="nav-item"><a href="/altenergoprostir/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
@@ -25,7 +27,7 @@
             <li class="nav-item"><a href="/altenergoprostir/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
         </ul>
     </nav>
-    <main class="main">
+    <main class="main ">
         <div class="container">
             <h2 class="section-header">📸 Фотогалерея</h2>
             <div class="gallery">

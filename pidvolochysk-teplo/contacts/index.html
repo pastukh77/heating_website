@@ -6,18 +6,39 @@
     <title>Контакти - ТОВ «ПІДВОЛОЧИСЬК ТЕПЛО»</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        :root { --primary-color: #E91E63; }
+        :root { --primary-color: #E91E63; --secondary-color: #C2185B; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, #EC407A 100%); }
-        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
         .btn { background-color: var(--primary-color); }
         .btn:hover { background-color: #C2185B; }
+        .contact-icon { color: var(--primary-color); }
+        .contact-item a { color: var(--primary-color); }
+        .info-box { border-left-color: var(--primary-color); }
+        
+        .header--rounded { border-radius: 0 0 50px 50px; padding: 2rem 0; }
+        .header--rounded h1 { font-size: 2rem; }
+        .nav--rounded { border-radius: 30px; margin: 1rem auto; max-width: 800px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: none; }
+        .nav--rounded .nav-list { padding: 0.5rem; }
+        .nav--rounded .nav-link { border-radius: 20px; padding: 0.8rem 1.2rem; margin: 0.2rem; }
+        .nav--rounded .nav-link:hover, .nav--rounded .nav-link.active { background: var(--primary-color); color: #fff; }
+        .info-box { border-radius: 30px; border-left: none; border: 2px solid var(--primary-color); }
+        .nav-card { border-radius: 30px; }
+        .nav-card:hover { border-radius: 30px; }
+        .section-header { border-radius: 30px; text-align: center; }
+        .btn { border-radius: 25px; padding: 0.8rem 2rem; }
+        .tab-btn { border-radius: 20px; margin: 0.3rem; }
+        .tab-btn.active { background: var(--primary-color); color: #fff; border-bottom: none; }
+        .tabs { border-bottom: none; justify-content: center; }
+        .document-section { border-radius: 20px; }
+        .gallery-item img { border-radius: 30px; }
+        
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header header--rounded">
         <h1>ТОВ «ПІДВОЛОЧИСЬК ТЕПЛО»</h1>
     </header>
-    <nav class="nav">
+    <nav class="nav nav--rounded">
         <ul class="nav-list">
             <li class="nav-item"><a href="/pidvolochysk-teplo" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
             <li class="nav-item"><a href="/pidvolochysk-teplo/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
@@ -25,7 +46,7 @@
             <li class="nav-item"><a href="/pidvolochysk-teplo/contacts" class="nav-link active"><span class="nav-icon">📞</span>Контакти</a></li>
         </ul>
     </nav>
-    <main class="main">
+    <main class="main ">
         <div class="container">
             <h2 class="section-header">📞 Контактна інформація</h2>
             <div class="info-box">

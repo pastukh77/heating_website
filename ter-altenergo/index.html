@@ -6,20 +6,40 @@
     <title>ТОВ «ТЕР АЛЬТЕНЕРГО»</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        :root { --primary-color: #00BCD4; }
+        :root { --primary-color: #00BCD4; --secondary-color: #0097A7; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, #26C6DA 100%); }
-        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
         .btn { background-color: var(--primary-color); }
         .btn:hover { background-color: #0097A7; }
         .nav-card:hover { border-color: var(--primary-color); }
-        .tab-btn.active { background-color: var(--primary-color); }
+        .tab-btn.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+        .nav-card h3 { color: var(--primary-color); }
+        .contact-icon { color: var(--primary-color); }
+        .contact-item a { color: var(--primary-color); }
+        .info-box { border-left-color: var(--primary-color); }
+        
+        body { display: flex; flex-direction: column; }
+        @media (min-width: 769px) {
+            .layout--sidebar { display: flex; }
+            .nav--sidebar { position: fixed; left: 0; top: 0; width: 220px; height: 100vh; flex-direction: column; border-bottom: none; border-right: 3px solid #E0E0E0; background: #f8f9fa; z-index: 100; }
+            .nav--sidebar .nav-list { flex-direction: column; padding-top: 80px; }
+            .nav--sidebar .nav-item { max-width: none; }
+            .nav--sidebar .nav-link { text-align: left; padding: 1rem 1.5rem; border-bottom: none; border-left: 4px solid transparent; }
+            .nav--sidebar .nav-link:hover, .nav--sidebar .nav-link.active { border-left-color: var(--primary-color); background: #fff; }
+            .header--sidebar { margin-left: 220px; text-align: left; padding-left: 2rem; }
+            .main { margin-left: 220px; }
+            .footer { margin-left: 220px; }
+        }
+        .info-box { border-left: 4px solid var(--primary-color); }
+        .section-header { background: none; color: var(--primary-color); border-left: 4px solid var(--primary-color); padding-left: 1rem; }
+        
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header header--sidebar">
         <h1>ТОВ «ТЕР АЛЬТЕНЕРГО»</h1>
     </header>
-    <nav class="nav">
+    <nav class="nav nav--sidebar">
         <ul class="nav-list">
             <li class="nav-item"><a href="/ter-altenergo" class="nav-link active"><span class="nav-icon">🏠</span>Головна</a></li>
             <li class="nav-item"><a href="/ter-altenergo/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
@@ -27,13 +47,13 @@
             <li class="nav-item"><a href="/ter-altenergo/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
         </ul>
     </nav>
-    <main class="main">
+    <main class="main layout--sidebar">
         <div class="container">
             <h2 class="section-header">Про нас</h2>
             <div class="info-box">
                 <h3>ТОВ «ТЕР АЛЬТЕНЕРГО»</h3>
-                <p>Опис компанії. Змініть цей текст на опис вашої компанії.</p>
-                <p>Додаткова інформація про діяльність компанії.</p>
+                <p>ТОВ «Тер Альтенерго» — підприємство, що спеціалізується на постачанні пари, гарячої води та кондиційованого повітря (КВЕД 35.30) для потреб мешканців Тернопільської області. Компанія заснована у 2021 році.</p>
+                <p>Підприємство здійснює діяльність у сфері теплопостачання, включаючи монтаж водопровідних мереж, систем опалення та кондиціонування, забезпечуючи надійне та ефективне постачання теплової енергії споживачам.</p>
             </div>
             <div class="nav-cards">
                 <a href="/ter-altenergo/documents" class="nav-card">
