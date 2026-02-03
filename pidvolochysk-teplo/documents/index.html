@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документи - ТОВ «ПІДВОЛОЧИСЬК ТЕПЛО»</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        :root { --primary-color: #E91E63; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, #EC407A 100%); }
+        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .btn { background-color: var(--primary-color); }
+        .btn:hover { background-color: #C2185B; }
+        .tab-btn.active { background-color: var(--primary-color); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>ТОВ «ПІДВОЛОЧИСЬК ТЕПЛО»</h1>
+    </header>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/pidvolochysk-teplo" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
+            <li class="nav-item"><a href="/pidvolochysk-teplo/documents" class="nav-link active"><span class="nav-icon">📄</span>Документи</a></li>
+            <li class="nav-item"><a href="/pidvolochysk-teplo/gallery" class="nav-link"><span class="nav-icon">📸</span>Фотогалерея</a></li>
+            <li class="nav-item"><a href="/pidvolochysk-teplo/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <div class="container">
+            <h2 class="section-header">📑 Офіційні документи</h2>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'doc1')">Документ 1</button>
+                <button class="tab-btn" onclick="openTab(event, 'doc2')">Документ 2</button>
+                <button class="tab-btn" onclick="openTab(event, 'doc3')">Документ 3</button>
+                <button class="tab-btn" onclick="openTab(event, 'doc4')">Документ 4</button>
+            </div>
+
+            <div id="doc1" class="tab-content active">
+                <div class="document-section">
+                    <h4>Назва документа 1</h4>
+                    <div class="document-actions">
+                        <a href="/pidvolochysk-teplo/docs/document1.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                    </div>
+                    <h4>📄 Перегляд документа:</h4>
+                    <embed src="/pidvolochysk-teplo/docs/document1.pdf" class="pdf-viewer" type="application/pdf">
+                </div>
+            </div>
+
+            <div id="doc2" class="tab-content">
+                <div class="document-section">
+                    <h4>Назва документа 2</h4>
+                    <div class="document-actions">
+                        <a href="/pidvolochysk-teplo/docs/document2.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                    </div>
+                    <h4>📄 Перегляд документа:</h4>
+                    <embed src="/pidvolochysk-teplo/docs/document2.pdf" class="pdf-viewer" type="application/pdf">
+                </div>
+            </div>
+
+            <div id="doc3" class="tab-content">
+                <div class="document-section">
+                    <h4>Назва документа 3</h4>
+                    <div class="document-actions">
+                        <a href="/pidvolochysk-teplo/docs/document3.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                    </div>
+                    <h4>📄 Перегляд документа:</h4>
+                    <embed src="/pidvolochysk-teplo/docs/document3.pdf" class="pdf-viewer" type="application/pdf">
+                </div>
+            </div>
+
+            <div id="doc4" class="tab-content">
+                <div class="document-section">
+                    <h4>Назва документа 4</h4>
+                    <div class="document-actions">
+                        <a href="/pidvolochysk-teplo/docs/document4.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                    </div>
+                    <h4>📄 Перегляд документа:</h4>
+                    <embed src="/pidvolochysk-teplo/docs/document4.pdf" class="pdf-viewer" type="application/pdf">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 ТОВ «ПІДВОЛОЧИСЬК ТЕПЛО». Всі права захищено.</p>
+    </footer>
+    <script>
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

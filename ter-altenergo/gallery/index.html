@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотогалерея - ТОВ «ТЕР АЛЬТЕНЕРГО»</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        :root { --primary-color: #00BCD4; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, #26C6DA 100%); }
+        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .btn { background-color: var(--primary-color); }
+        .btn:hover { background-color: #0097A7; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>ТОВ «ТЕР АЛЬТЕНЕРГО»</h1>
+    </header>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/ter-altenergo" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
+            <li class="nav-item"><a href="/ter-altenergo/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
+            <li class="nav-item"><a href="/ter-altenergo/gallery" class="nav-link active"><span class="nav-icon">📸</span>Фотогалерея</a></li>
+            <li class="nav-item"><a href="/ter-altenergo/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <div class="container">
+            <h2 class="section-header">📸 Фотогалерея</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="/ter-altenergo/photos/photo1.jpg" alt="photo1.jpg" loading="lazy"></div>
+                <div class="gallery-item"><img src="/ter-altenergo/photos/photo2.jpg" alt="photo2.jpg" loading="lazy"></div>
+                <div class="gallery-item"><img src="/ter-altenergo/photos/photo3.jpg" alt="photo3.jpg" loading="lazy"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 ТОВ «ТЕР АЛЬТЕНЕРГО». Всі права захищено.</p>
+    </footer>
+</body>
+</html>

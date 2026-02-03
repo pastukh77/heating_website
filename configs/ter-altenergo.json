@@ -1,0 +1,43 @@
+{
+  "slug": "ter-altenergo",
+  "companyName": "ТОВ «ТЕР АЛЬТЕНЕРГО»",
+  "shortName": "ТЕР АЛЬТЕНЕРГО",
+  "description": "Опис компанії. Змініть цей текст на опис вашої компанії.",
+  "additionalInfo": "Додаткова інформація про діяльність компанії.",
+  "color": "#00BCD4",
+  "colorLight": "#26C6DA",
+  "colorDark": "#0097A7",
+  "phone": "+380 (00) 000-00-00",
+  "phoneRaw": "+380000000000",
+  "email": "email@example.com",
+  "address": "Ваша адреса тут",
+  "docsFolder": "docs",
+  "photosFolder": "photos",
+  "documents": [
+    {
+      "id": "doc1",
+      "title": "Документ 1",
+      "fullTitle": "Назва документа 1",
+      "file": "document1.pdf"
+    },
+    {
+      "id": "doc2",
+      "title": "Документ 2",
+      "fullTitle": "Назва документа 2",
+      "file": "document2.pdf"
+    },
+    {
+      "id": "doc3",
+      "title": "Документ 3",
+      "fullTitle": "Назва документа 3",
+      "file": "document3.pdf"
+    },
+    {
+      "id": "doc4",
+      "title": "Документ 4",
+      "fullTitle": "Назва документа 4",
+      "file": "document4.pdf"
+    }
+  ],
+  "photos": ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
+}

@@ -5,69 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТОВ «АЛЬТЕНЕРГОПРОСТІР»</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        :root { --primary-color: #FF6B35; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c42 100%); }
+        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); }
+        .btn { background-color: var(--primary-color); }
+        .btn:hover { background-color: #e55a2b; }
+        .nav-card:hover { border-color: var(--primary-color); }
+        .tab-btn.active { background-color: var(--primary-color); }
+    </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <h1>ТОВ «АЛЬТЕНЕРГОПРОСТІР»</h1>
     </header>
-
-    <!-- Navigation -->
     <nav class="nav">
         <ul class="nav-list">
-            <li class="nav-item">
-                <a href="../altenergoprostir" class="nav-link active">
-                    <span class="nav-icon">🏠</span>
-                    Головна
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../documents.html" class="nav-link">
-                    <span class="nav-icon">📄</span>
-                    Документи
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../gallery.html" class="nav-link">
-                    <span class="nav-icon">📸</span>
-                    Фотогалерея
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../contacts.html" class="nav-link">
-                    <span class="nav-icon">📞</span>
-                    Контакти
-                </a>
-            </li>
+            <li class="nav-item"><a href="/altenergoprostir" class="nav-link active"><span class="nav-icon">🏠</span>Головна</a></li>
+            <li class="nav-item"><a href="/altenergoprostir/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
+            <li class="nav-item"><a href="/altenergoprostir/gallery" class="nav-link"><span class="nav-icon">📸</span>Фотогалерея</a></li>
+            <li class="nav-item"><a href="/altenergoprostir/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
         </ul>
     </nav>
-
-    <!-- Main Content -->
     <main class="main">
         <div class="container">
             <h2 class="section-header">Про нас</h2>
-
             <div class="info-box">
                 <h3>ТОВ «АЛЬТЕНЕРГОПРОСТІР»</h3>
                 <p>ТОВ «Альтенергопростір» — українське підприємство, що спеціалізується на постачанні теплової енергії для опалення та технологічних потреб.</p>
                 <p>Компанія зареєстрована в м. Тернополі та працює в сфері теплопостачання відповідно до КВЕД 35.30, забезпечуючи надійне та ефективне енерго- та теплопостачання для своїх клієнтів.</p>
             </div>
-
-            <!-- Quick Navigation Cards -->
             <div class="nav-cards">
-                <a href="../documents.html" class="nav-card">
+                <a href="/altenergoprostir/documents" class="nav-card">
                     <h3>📄 Документи</h3>
                     <p>Перегляньте наші офіційні документи та ліцензії</p>
                     <span class="btn">Переглянути документи</span>
                 </a>
-
-                <a href="../gallery.html" class="nav-card">
+                <a href="/altenergoprostir/gallery" class="nav-card">
                     <h3>📸 Фотогалерея</h3>
                     <p>Дивіться фотографії нашого обладнання та об'єктів</p>
                     <span class="btn">Відкрити галерею</span>
                 </a>
-
-                <a href="../contacts.html" class="nav-card">
+                <a href="/altenergoprostir/contacts" class="nav-card">
                     <h3>📞 Контакти</h3>
                     <p>Зв'яжіться з нами для отримання інформації</p>
                     <span class="btn">Наші контакти</span>
@@ -75,8 +54,6 @@
             </div>
         </div>
     </main>
-
-    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 ТОВ «АЛЬТЕНЕРГОПРОСТІР». Всі права захищено.</p>
     </footer>
