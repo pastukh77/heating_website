@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотогалерея - ТОВ «АЛЬТЕНЕРГОПРОСТІР»</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        :root { --primary-color: #FF6B35; --secondary-color: #e55a2b; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c42 100%); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+        .btn { background-color: var(--primary-color); }
+        .btn:hover { background-color: #e55a2b; }
+        .info-box { border-left-color: var(--primary-color); }
+        
+    </style>
+</head>
+<body>
+    <header class="header ">
+        <h1>ТОВ «АЛЬТЕНЕРГОПРОСТІР»</h1>
+    </header>
+    <nav class="nav ">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/altenergoprostir" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
+            <li class="nav-item"><a href="/altenergoprostir/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
+            <li class="nav-item"><a href="/altenergoprostir/gallery" class="nav-link active"><span class="nav-icon">📸</span>Фотогалерея</a></li>
+            <li class="nav-item"><a href="/altenergoprostir/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
+        </ul>
+    </nav>
+    <main class="main ">
+        <div class="container">
+            <h2 class="section-header">📸 Фотогалерея</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="/altenergoprostir/photos/main1.JPG" alt="main1.JPG" loading="lazy"></div>
+                <div class="gallery-item"><img src="/altenergoprostir/photos/main2.JPG" alt="main2.JPG" loading="lazy"></div>
+                <div class="gallery-item"><img src="/altenergoprostir/photos/main3.jpg" alt="main3.jpg" loading="lazy"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 ТОВ «АЛЬТЕНЕРГОПРОСТІР». Всі права захищено.</p>
+    </footer>
+</body>
+</html>

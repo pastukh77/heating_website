@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти - ТОВ «ТЕРНОПІЛЬ ТЕПЛО»</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        :root { --primary-color: #2196F3; --secondary-color: #1976D2; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, #42a5f5 100%); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+        .btn { background-color: var(--primary-color); }
+        .btn:hover { background-color: #1976D2; }
+        .contact-icon { color: var(--primary-color); }
+        .contact-item a { color: var(--primary-color); }
+        .info-box { border-left-color: var(--primary-color); }
+        
+        .header--modern { padding: 2.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .header--modern h1 { font-size: 2.8rem; letter-spacing: 1px; text-transform: uppercase; }
+        .nav--modern { background: #1a1a2e; border-bottom: none; }
+        .nav--modern .nav-link { color: #fff; opacity: 0.7; }
+        .nav--modern .nav-link:hover, .nav--modern .nav-link.active { opacity: 1; background: rgba(255,255,255,0.1); }
+        .nav--modern .nav-icon { font-size: 1.8rem; }
+        .info-box { border-left: none; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .nav-card { border-radius: 20px; border: none; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .nav-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .section-header { background: none; color: var(--primary-color); border-left: 5px solid var(--primary-color); padding-left: 1rem; }
+        
+    </style>
+</head>
+<body>
+    <header class="header header--modern">
+        <h1>ТОВ «ТЕРНОПІЛЬ ТЕПЛО»</h1>
+    </header>
+    <nav class="nav nav--modern">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/ternopil-teplo" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
+            <li class="nav-item"><a href="/ternopil-teplo/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
+            <li class="nav-item"><a href="/ternopil-teplo/gallery" class="nav-link"><span class="nav-icon">📸</span>Фотогалерея</a></li>
+            <li class="nav-item"><a href="/ternopil-teplo/contacts" class="nav-link active"><span class="nav-icon">📞</span>Контакти</a></li>
+        </ul>
+    </nav>
+    <main class="main ">
+        <div class="container">
+            <h2 class="section-header">📞 Контактна інформація</h2>
+            <div class="info-box">
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div><strong>Телефон:</strong><br><a href="tel:+380000000000">+380 (00) 000-00-00</a></div>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div><strong>Email:</strong><br><a href="mailto:email@example.com">email@example.com</a></div>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div><strong>Адреса:</strong><br>Ваша адреса тут</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 ТОВ «ТЕРНОПІЛЬ ТЕПЛО». Всі права захищено.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "slug": "ternopil-teplo",
+  "styleVariant": "modern",
+  "companyName": "ТОВ «ТЕРНОПІЛЬ ТЕПЛО»",
+  "shortName": "ТЕРНОПІЛЬ ТЕПЛО",
+  "description": "ТОВ «Тернопіль Тепло» — підприємство, що спеціалізується на постачанні пари, гарячої води та кондиційованого повітря (КВЕД 35.30) для потреб мешканців міста Тернополя та Тернопільської області.",
+  "additionalInfo": "Компанія зареєстрована у 2024 році та здійснює діяльність у сфері теплопостачання, забезпечуючи надійне та ефективне постачання теплової енергії споживачам.",
+  "color": "#2196F3",
+  "colorLight": "#42a5f5",
+  "colorDark": "#1976D2",
+  "phone": "+380 (00) 000-00-00",
+  "phoneRaw": "+380000000000",
+  "email": "email@example.com",
+  "address": "Ваша адреса тут",
+  "docsFolder": "docs",
+  "photosFolder": "photos",
+  "documents": [
+    {
+      "id": "doc1",
+      "title": "Документ 1",
+      "fullTitle": "Назва документа 1",
+      "file": "document1.pdf"
+    },
+    {
+      "id": "doc2",
+      "title": "Документ 2",
+      "fullTitle": "Назва документа 2",
+      "file": "document2.pdf"
+    },
+    {
+      "id": "doc3",
+      "title": "Документ 3",
+      "fullTitle": "Назва документа 3",
+      "file": "document3.pdf"
+    },
+    {
+      "id": "doc4",
+      "title": "Документ 4",
+      "fullTitle": "Назва документа 4",
+      "file": "document4.pdf"
+    }
+  ],
+  "photos": ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
+}
