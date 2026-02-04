@@ -11,7 +11,9 @@
   "phone": "+380 (67) 352-38-74",
   "phoneRaw": "+380673523874",
   "email": "ternopilteplo24@gmail.com",
-  "address": "Ваша адреса тут",
+  "addresses": [
+    "Ваша адреса тут"
+  ],
   "docsFolder": "docs",
   "photosFolder": "photos",
   "documents": [

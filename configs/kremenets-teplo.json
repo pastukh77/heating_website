@@ -8,10 +8,13 @@
   "color": "#9C27B0",
   "colorLight": "#AB47BC",
   "colorDark": "#7B1FA2",
-  "phone": "+380 (67) 352-38-74",
-  "phoneRaw": "+380673523874",
+  "phone": "+380 (67) 188-05-05",
+  "phoneRaw": "+380671880505",
   "email": "kremenetsteplo@gmail.com",
-  "address": "Ваша адреса тут",
+  "addresses": [
+    "Тернопільська обл., м. Кременець, вул. Базарна 3а",
+    "Тернопільська обл., м. Кременець, вул. Петлюри 18а"
+  ],
   "docsFolder": "docs",
   "photosFolder": "photos",
   "documents": [

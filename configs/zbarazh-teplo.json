@@ -8,10 +8,13 @@
   "color": "#4CAF50",
   "colorLight": "#66BB6A",
   "colorDark": "#388E3C",
-  "phone": "+380 (67) 352-38-74",
-  "phoneRaw": "+380673523874",
+  "phone": "+380 (67) 188-05-05",
+  "phoneRaw": "+380671880505",
   "email": "zbarazhteplo@gmail.com",
-  "address": "Тернопільська обл., Кременецький р-н, місто Ланівці, вул. Шевченка, 30",
+  "addresses": [
+    "Тернопільська обл., м. Збараж, вул. Чорновола 1а",
+    "Тернопільська обл., м. Ланівці, вул. Шевченка 30"
+  ],
   "docsFolder": "docs",
   "photosFolder": "photos",
   "documents": [

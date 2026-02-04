@@ -322,6 +322,15 @@ function generateGalleryHtml(config) {
 
 function generateContactsHtml(config) {
     const variant = getStyleVariant(config);
+
+    // Support both single address (string) and multiple addresses (array)
+    const addresses = config.addresses || (config.address ? [config.address] : []);
+    const addressesHtml = addresses.length > 0 ? `
+                    <li class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div><strong>Адреси провадження господарської діяльності:</strong><br>${addresses.join('<br>')}</div>
+                    </li>` : '';
+
     return `<!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -365,11 +374,7 @@ function generateContactsHtml(config) {
                     <li class="contact-item">
                         <span class="contact-icon">📧</span>
                         <div><strong>Email:</strong><br><a href="mailto:${config.email}">${config.email}</a></div>
-                    </li>
-                    <li class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div><strong>Адреса:</strong><br>${config.address}</div>
-                    </li>
+                    </li>${addressesHtml}
                 </ul>
             </div>
         </div>

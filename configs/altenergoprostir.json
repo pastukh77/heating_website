@@ -11,7 +11,9 @@
   "phone": "+380 (67) 352-38-74",
   "phoneRaw": "+380673523874",
   "email": "altenergoprostir@gmail.com",
-  "address": "Живова, 11/605",
+  "addresses": [
+    "м. Тернопіль, вул. Живова, 11/605"
+  ],
   "docsFolder": "docs",
   "photosFolder": "photos",
   "documents": [
