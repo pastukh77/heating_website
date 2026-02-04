@@ -111,7 +111,11 @@ const styleVariants = {
             .nav--sidebar .nav-link:hover, .nav--sidebar .nav-link.active { border-left-color: var(--primary-color); background: #fff; }
             .header--sidebar { margin-left: 220px; text-align: left; padding-left: 2rem; }
             .main { margin-left: 220px; }
+            .main .container { max-width: none; width: 100%; padding-right: 2rem; }
             .footer { margin-left: 220px; }
+            .pdf-viewer { width: 100%; }
+            .gallery { width: 100%; }
+            .gallery-item img { max-width: 100%; }
         }
         .info-box { border-left: 4px solid var(--primary-color); }
         .section-header { background: none; color: var(--primary-color); border-left: 4px solid var(--primary-color); padding-left: 1rem; }
