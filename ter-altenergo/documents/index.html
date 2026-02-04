@@ -24,7 +24,11 @@
             .nav--sidebar .nav-link:hover, .nav--sidebar .nav-link.active { border-left-color: var(--primary-color); background: #fff; }
             .header--sidebar { margin-left: 220px; text-align: left; padding-left: 2rem; }
             .main { margin-left: 220px; }
+            .main .container { max-width: none; width: 100%; padding-right: 2rem; }
             .footer { margin-left: 220px; }
+            .pdf-viewer { width: 100%; }
+            .gallery { width: 100%; }
+            .gallery-item img { max-width: 100%; }
         }
         .info-box { border-left: 4px solid var(--primary-color); }
         .section-header { background: none; color: var(--primary-color); border-left: 4px solid var(--primary-color); padding-left: 1rem; }
@@ -47,53 +51,41 @@
         <div class="container">
             <h2 class="section-header">📑 Офіційні документи</h2>
             <div class="tabs">
-                <button class="tab-btn active" onclick="openTab(event, 'doc1')">Документ 1</button>
-                <button class="tab-btn" onclick="openTab(event, 'doc2')">Документ 2</button>
-                <button class="tab-btn" onclick="openTab(event, 'doc3')">Документ 3</button>
-                <button class="tab-btn" onclick="openTab(event, 'doc4')">Документ 4</button>
+                <button class="tab-btn active" onclick="openTab(event, 'license1')">Ліцензія на виробництво</button>
+                <button class="tab-btn" onclick="openTab(event, 'license2')">Ліцензія на постачання</button>
+                <button class="tab-btn" onclick="openTab(event, 'license3')">Ліцензія на транспортування</button>
             </div>
 
-            <div id="doc1" class="tab-content active">
+            <div id="license1" class="tab-content active">
                 <div class="document-section">
-                    <h4>Назва документа 1</h4>
+                    <h4>Ліцензія на право провадження господарської діяльності з виробництва теплової енергії</h4>
                     <div class="document-actions">
-                        <a href="/ter-altenergo/docs/document1.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                        <a href="/ter-altenergo/docs/ліцензія_виробництво.pdf" class="btn" download>⬇️ Завантажити документ</a>
                     </div>
                     <h4>📄 Перегляд документа:</h4>
-                    <embed src="/ter-altenergo/docs/document1.pdf" class="pdf-viewer" type="application/pdf">
+                    <embed src="/ter-altenergo/docs/ліцензія_виробництво.pdf" class="pdf-viewer" type="application/pdf">
                 </div>
             </div>
 
-            <div id="doc2" class="tab-content">
+            <div id="license2" class="tab-content">
                 <div class="document-section">
-                    <h4>Назва документа 2</h4>
+                    <h4>Ліцензія на право провадження господарської діяльності з постачання теплової енергії</h4>
                     <div class="document-actions">
-                        <a href="/ter-altenergo/docs/document2.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                        <a href="/ter-altenergo/docs/ліцензія_постачання.pdf" class="btn" download>⬇️ Завантажити документ</a>
                     </div>
                     <h4>📄 Перегляд документа:</h4>
-                    <embed src="/ter-altenergo/docs/document2.pdf" class="pdf-viewer" type="application/pdf">
+                    <embed src="/ter-altenergo/docs/ліцензія_постачання.pdf" class="pdf-viewer" type="application/pdf">
                 </div>
             </div>
 
-            <div id="doc3" class="tab-content">
+            <div id="license3" class="tab-content">
                 <div class="document-section">
-                    <h4>Назва документа 3</h4>
+                    <h4>Ліцензія на право провадження господарської діяльності з транспортування теплової енергії</h4>
                     <div class="document-actions">
-                        <a href="/ter-altenergo/docs/document3.pdf" class="btn" download>⬇️ Завантажити документ</a>
+                        <a href="/ter-altenergo/docs/ліцензія_транспортування.pdf" class="btn" download>⬇️ Завантажити документ</a>
                     </div>
                     <h4>📄 Перегляд документа:</h4>
-                    <embed src="/ter-altenergo/docs/document3.pdf" class="pdf-viewer" type="application/pdf">
-                </div>
-            </div>
-
-            <div id="doc4" class="tab-content">
-                <div class="document-section">
-                    <h4>Назва документа 4</h4>
-                    <div class="document-actions">
-                        <a href="/ter-altenergo/docs/document4.pdf" class="btn" download>⬇️ Завантажити документ</a>
-                    </div>
-                    <h4>📄 Перегляд документа:</h4>
-                    <embed src="/ter-altenergo/docs/document4.pdf" class="pdf-viewer" type="application/pdf">
+                    <embed src="/ter-altenergo/docs/ліцензія_транспортування.pdf" class="pdf-viewer" type="application/pdf">
                 </div>
             </div>
         </div>

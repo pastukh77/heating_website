@@ -8,37 +8,31 @@
   "color": "#2196F3",
   "colorLight": "#42a5f5",
   "colorDark": "#1976D2",
-  "phone": "+380 (00) 000-00-00",
-  "phoneRaw": "+380000000000",
-  "email": "email@example.com",
+  "phone": "+380 (67) 352-38-74",
+  "phoneRaw": "+380673523874",
+  "email": "ternopilteplo24@gmail.com",
   "address": "Ваша адреса тут",
   "docsFolder": "docs",
   "photosFolder": "photos",
   "documents": [
     {
-      "id": "doc1",
-      "title": "Документ 1",
-      "fullTitle": "Назва документа 1",
-      "file": "document1.pdf"
+      "id": "license1",
+      "title": "Ліцензія на виробництво",
+      "fullTitle": "Ліцензія на право провадження господарської діяльності з виробництва теплової енергії",
+      "file": "ліцензія_виробництво.pdf"
     },
     {
-      "id": "doc2",
-      "title": "Документ 2",
-      "fullTitle": "Назва документа 2",
-      "file": "document2.pdf"
+      "id": "license2",
+      "title": "Ліцензія на постачання",
+      "fullTitle": "Ліцензія на право провадження господарської діяльності з постачання теплової енергії",
+      "file": "ліцензія_постачання.pdf"
     },
     {
-      "id": "doc3",
-      "title": "Документ 3",
-      "fullTitle": "Назва документа 3",
-      "file": "document3.pdf"
-    },
-    {
-      "id": "doc4",
-      "title": "Документ 4",
-      "fullTitle": "Назва документа 4",
-      "file": "document4.pdf"
+      "id": "tariff",
+      "title": "Тариф на теплопостачання",
+      "fullTitle": "Про встановлення тарифів на постачання теплової енергії з альтернативних джерел",
+      "file": "тариф.pdf"
     }
   ],
-  "photos": ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
+  "photos": ["tokkpnl2.jpg", "tokkpnl1.jpg", "tokkpnl3.jpg"]
 }
