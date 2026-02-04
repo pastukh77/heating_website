@@ -11,7 +11,9 @@
   "phone": "+380 (67) 188-05-05",
   "phoneRaw": "+380671880505",
   "email": "pidvolochteplo@gmail.com",
-  "address": "Ваша адреса тут",
+  "addresses": [
+    "Ваша адреса тут"
+  ],
   "docsFolder": "docs",
   "photosFolder": "photos",
   "documents": [
