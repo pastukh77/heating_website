@@ -131,7 +131,7 @@ body {
 /* === NAVIGATION CARDS (Home Page) === */
 .nav-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -238,6 +238,27 @@ body {
     height: 800px;
     border: 1px solid #E0E0E0;
     border-radius: 5px;
+}
+
+/* === NEWS === */
+.news-item {
+    margin-bottom: 2rem;
+}
+
+.news-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.news-title {
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.news-summary {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
 }
 
 /* === GALLERY === */

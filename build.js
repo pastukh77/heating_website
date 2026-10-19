@@ -64,7 +64,6 @@ const styleVariants = {
         .nav--corporate .nav-link:hover, .nav--corporate .nav-link.active { background: var(--primary-color); }
         .nav--corporate .nav-icon { display: inline; margin-right: 8px; font-size: 1rem; }
         .info-box { border-radius: 5px; border-left: 4px solid var(--primary-color); }
-        .nav-cards { grid-template-columns: repeat(3, 1fr); }
         .nav-card { border-radius: 5px; border-top: 4px solid var(--primary-color); }
         .section-header { background: var(--primary-color); border-radius: 0; }
         .footer { background: #2c2c2c; color: #fff; }
@@ -127,8 +126,43 @@ function getStyleVariant(config) {
     return styleVariants[config.styleVariant] || styleVariants.classic;
 }
 
+const navItems = [
+    { key: 'home', path: '/', icon: '🏠', label: 'Головна' },
+    { key: 'news', path: '/news/', icon: '📰', label: 'Новини' },
+    { key: 'documents', path: '/documents/', icon: '📄', label: 'Документи' },
+    { key: 'gallery', path: '/gallery/', icon: '📸', label: 'Фотогалерея' },
+    { key: 'contacts', path: '/contacts/', icon: '📞', label: 'Контакти' }
+];
+
+// Inline favicon so browsers don't request a missing /favicon.ico
+const faviconLink = `<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">`;
+
+// Warn at build time about files referenced in a config but missing on disk
+function fileExists(config, folder, file) {
+    const exists = fs.existsSync(path.join(config.slug, folder, file));
+    if (!exists) console.warn(`  ⚠️  ${config.slug}: missing file ${folder}/${file}`);
+    return exists;
+}
+
+const buildYear = new Date().getFullYear();
+
+const missingDocHtml = `<div class="info-box"><p>Документ буде додано найближчим часом.</p></div>`;
+
+function generateNav(config, activeKey) {
+    const variant = getStyleVariant(config);
+    const items = navItems.map(item =>
+        `<li class="nav-item"><a href="/${config.slug}${item.path}" class="nav-link${item.key === activeKey ? ' active' : ''}"><span class="nav-icon">${item.icon}</span>${item.label}</a></li>`
+    ).join('\n            ');
+    return `<nav class="nav ${variant.navClass}">
+        <ul class="nav-list">
+            ${items}
+        </ul>
+    </nav>`;
+}
+
 function generateIndexHtml(config) {
     const variant = getStyleVariant(config);
+    const latestNews = (config.news || [])[0];
     return `<!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -136,6 +170,7 @@ function generateIndexHtml(config) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${config.companyName}</title>
     <link rel="stylesheet" href="../style.css">
+    ${faviconLink}
     <style>
         :root { --primary-color: ${config.color}; --secondary-color: ${config.colorDark}; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, ${config.colorLight} 100%); }
@@ -155,14 +190,7 @@ function generateIndexHtml(config) {
     <header class="header ${variant.headerClass}">
         <h1>${config.companyName}</h1>
     </header>
-    <nav class="nav ${variant.navClass}">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="/${config.slug}" class="nav-link active"><span class="nav-icon">🏠</span>Головна</a></li>
-            <li class="nav-item"><a href="/${config.slug}/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
-            <li class="nav-item"><a href="/${config.slug}/gallery" class="nav-link"><span class="nav-icon">📸</span>Фотогалерея</a></li>
-            <li class="nav-item"><a href="/${config.slug}/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
-        </ul>
-    </nav>
+    ${generateNav(config, 'home')}
     <main class="main ${variant.containerClass}">
         <div class="container">
             <h2 class="section-header">Про нас</h2>
@@ -172,17 +200,22 @@ function generateIndexHtml(config) {
                 <p>${config.additionalInfo}</p>
             </div>
             <div class="nav-cards">
-                <a href="/${config.slug}/documents" class="nav-card">
+                <a href="/${config.slug}/news/" class="nav-card">
+                    <h3>📰 Новини</h3>
+                    <p>${latestNews ? `${latestNews.date} — ${latestNews.title}` : 'Новини та оголошення підприємства'}</p>
+                    <span class="btn">Читати новини</span>
+                </a>
+                <a href="/${config.slug}/documents/" class="nav-card">
                     <h3>📄 Документи</h3>
                     <p>Перегляньте наші офіційні документи та ліцензії</p>
                     <span class="btn">Переглянути документи</span>
                 </a>
-                <a href="/${config.slug}/gallery" class="nav-card">
+                <a href="/${config.slug}/gallery/" class="nav-card">
                     <h3>📸 Фотогалерея</h3>
                     <p>Дивіться фотографії нашого обладнання та об'єктів</p>
                     <span class="btn">Відкрити галерею</span>
                 </a>
-                <a href="/${config.slug}/contacts" class="nav-card">
+                <a href="/${config.slug}/contacts/" class="nav-card">
                     <h3>📞 Контакти</h3>
                     <p>Зв'яжіться з нами для отримання інформації</p>
                     <span class="btn">Наші контакти</span>
@@ -191,7 +224,7 @@ function generateIndexHtml(config) {
         </div>
     </main>
     <footer class="footer">
-        <p>&copy; 2025 ${config.companyName}. Всі права захищено.</p>
+        <p>&copy; ${buildYear} ${config.companyName}. Всі права захищено.</p>
     </footer>
 </body>
 </html>`;
@@ -207,11 +240,11 @@ function generateDocumentsHtml(config) {
             <div id="${doc.id}" class="tab-content${i === 0 ? ' active' : ''}">
                 <div class="document-section">
                     <h4>${doc.fullTitle}</h4>
-                    <div class="document-actions">
+                    ${fileExists(config, config.docsFolder, doc.file) ? `<div class="document-actions">
                         <a href="/${config.slug}/${config.docsFolder}/${doc.file}" class="btn" download>⬇️ Завантажити документ</a>
                     </div>
                     <h4>📄 Перегляд документа:</h4>
-                    <embed src="/${config.slug}/${config.docsFolder}/${doc.file}" class="pdf-viewer" type="application/pdf">
+                    <embed src="/${config.slug}/${config.docsFolder}/${doc.file}" class="pdf-viewer" type="application/pdf">` : missingDocHtml}
                 </div>
             </div>`
     ).join('\n');
@@ -223,6 +256,7 @@ function generateDocumentsHtml(config) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Документи - ${config.companyName}</title>
     <link rel="stylesheet" href="../../style.css">
+    ${faviconLink}
     <style>
         :root { --primary-color: ${config.color}; --secondary-color: ${config.colorDark}; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, ${config.colorLight} 100%); }
@@ -238,14 +272,7 @@ function generateDocumentsHtml(config) {
     <header class="header ${variant.headerClass}">
         <h1>${config.companyName}</h1>
     </header>
-    <nav class="nav ${variant.navClass}">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="/${config.slug}" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
-            <li class="nav-item"><a href="/${config.slug}/documents" class="nav-link active"><span class="nav-icon">📄</span>Документи</a></li>
-            <li class="nav-item"><a href="/${config.slug}/gallery" class="nav-link"><span class="nav-icon">📸</span>Фотогалерея</a></li>
-            <li class="nav-item"><a href="/${config.slug}/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
-        </ul>
-    </nav>
+    ${generateNav(config, 'documents')}
     <main class="main ${variant.containerClass}">
         <div class="container">
             <h2 class="section-header">📑 Офіційні документи</h2>
@@ -256,7 +283,7 @@ ${contents}
         </div>
     </main>
     <footer class="footer">
-        <p>&copy; 2025 ${config.companyName}. Всі права захищено.</p>
+        <p>&copy; ${buildYear} ${config.companyName}. Всі права захищено.</p>
     </footer>
     <script>
         function openTab(evt, tabName) {
@@ -270,11 +297,70 @@ ${contents}
 </html>`;
 }
 
+function generateNewsHtml(config) {
+    const variant = getStyleVariant(config);
+    const news = config.news || [];
+    const newsFolder = config.newsFolder || config.docsFolder;
+
+    const items = news.length > 0 ? news.map(item => `
+            <article id="${item.id}" class="document-section news-item">
+                <p class="news-date">📅 ${item.date}</p>
+                <h3 class="news-title">${item.title}</h3>
+                <p class="news-summary">${item.summary}</p>
+                ${fileExists(config, newsFolder, item.file) ? `<div class="document-actions">
+                    <a href="/${config.slug}/${newsFolder}/${item.file}" class="btn" download>⬇️ Завантажити документ</a>
+                </div>
+                <h4>📄 Перегляд документа:</h4>
+                <embed src="/${config.slug}/${newsFolder}/${item.file}" class="pdf-viewer" type="application/pdf">` : missingDocHtml}
+            </article>`
+    ).join('\n') : `
+            <div class="info-box">
+                <p>Наразі новин немає. Слідкуйте за оновленнями.</p>
+            </div>`;
+
+    return `<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новини - ${config.companyName}</title>
+    <link rel="stylesheet" href="../../style.css">
+    ${faviconLink}
+    <style>
+        :root { --primary-color: ${config.color}; --secondary-color: ${config.colorDark}; }
+        .header { background: linear-gradient(135deg, var(--primary-color) 0%, ${config.colorLight} 100%); }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+        .btn { background-color: var(--primary-color); }
+        .btn:hover { background-color: ${config.colorDark}; }
+        .info-box { border-left-color: var(--primary-color); }
+        .news-date { color: var(--primary-color); }
+        ${variant.extraStyles}
+    </style>
+</head>
+<body>
+    <header class="header ${variant.headerClass}">
+        <h1>${config.companyName}</h1>
+    </header>
+    ${generateNav(config, 'news')}
+    <main class="main ${variant.containerClass}">
+        <div class="container">
+            <h2 class="section-header">📰 Новини</h2>
+${items}
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; ${buildYear} ${config.companyName}. Всі права захищено.</p>
+    </footer>
+</body>
+</html>`;
+}
+
 function generateGalleryHtml(config) {
     const variant = getStyleVariant(config);
-    const photos = config.photos.map(photo =>
+    const available = config.photos.filter(photo => fileExists(config, config.photosFolder, photo));
+    const photos = available.length > 0 ? available.map(photo =>
         `<div class="gallery-item"><img src="/${config.slug}/${config.photosFolder}/${photo}" alt="${photo}" loading="lazy"></div>`
-    ).join('\n                ');
+    ).join('\n                ') : `<div class="info-box"><p>Фотографії будуть додані найближчим часом.</p></div>`;
 
     return `<!DOCTYPE html>
 <html lang="uk">
@@ -283,6 +369,7 @@ function generateGalleryHtml(config) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фотогалерея - ${config.companyName}</title>
     <link rel="stylesheet" href="../../style.css">
+    ${faviconLink}
     <style>
         :root { --primary-color: ${config.color}; --secondary-color: ${config.colorDark}; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, ${config.colorLight} 100%); }
@@ -297,14 +384,7 @@ function generateGalleryHtml(config) {
     <header class="header ${variant.headerClass}">
         <h1>${config.companyName}</h1>
     </header>
-    <nav class="nav ${variant.navClass}">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="/${config.slug}" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
-            <li class="nav-item"><a href="/${config.slug}/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
-            <li class="nav-item"><a href="/${config.slug}/gallery" class="nav-link active"><span class="nav-icon">📸</span>Фотогалерея</a></li>
-            <li class="nav-item"><a href="/${config.slug}/contacts" class="nav-link"><span class="nav-icon">📞</span>Контакти</a></li>
-        </ul>
-    </nav>
+    ${generateNav(config, 'gallery')}
     <main class="main ${variant.containerClass}">
         <div class="container">
             <h2 class="section-header">📸 Фотогалерея</h2>
@@ -314,7 +394,7 @@ function generateGalleryHtml(config) {
         </div>
     </main>
     <footer class="footer">
-        <p>&copy; 2025 ${config.companyName}. Всі права захищено.</p>
+        <p>&copy; ${buildYear} ${config.companyName}. Всі права захищено.</p>
     </footer>
 </body>
 </html>`;
@@ -338,6 +418,7 @@ function generateContactsHtml(config) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакти - ${config.companyName}</title>
     <link rel="stylesheet" href="../../style.css">
+    ${faviconLink}
     <style>
         :root { --primary-color: ${config.color}; --secondary-color: ${config.colorDark}; }
         .header { background: linear-gradient(135deg, var(--primary-color) 0%, ${config.colorLight} 100%); }
@@ -354,14 +435,7 @@ function generateContactsHtml(config) {
     <header class="header ${variant.headerClass}">
         <h1>${config.companyName}</h1>
     </header>
-    <nav class="nav ${variant.navClass}">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="/${config.slug}" class="nav-link"><span class="nav-icon">🏠</span>Головна</a></li>
-            <li class="nav-item"><a href="/${config.slug}/documents" class="nav-link"><span class="nav-icon">📄</span>Документи</a></li>
-            <li class="nav-item"><a href="/${config.slug}/gallery" class="nav-link"><span class="nav-icon">📸</span>Фотогалерея</a></li>
-            <li class="nav-item"><a href="/${config.slug}/contacts" class="nav-link active"><span class="nav-icon">📞</span>Контакти</a></li>
-        </ul>
-    </nav>
+    ${generateNav(config, 'contacts')}
     <main class="main ${variant.containerClass}">
         <div class="container">
             <h2 class="section-header">📞 Контактна інформація</h2>
@@ -380,7 +454,7 @@ function generateContactsHtml(config) {
         </div>
     </main>
     <footer class="footer">
-        <p>&copy; 2025 ${config.companyName}. Всі права захищено.</p>
+        <p>&copy; ${buildYear} ${config.companyName}. Всі права захищено.</p>
     </footer>
 </body>
 </html>`;
@@ -397,15 +471,18 @@ for (const file of configFiles) {
     const docsDir = `${siteDir}/documents`;
     const galleryDir = `${siteDir}/gallery`;
     const contactsDir = `${siteDir}/contacts`;
+    const newsDir = `${siteDir}/news`;
 
     // Create directories
     if (!fs.existsSync(siteDir)) fs.mkdirSync(siteDir, { recursive: true });
     if (!fs.existsSync(docsDir)) fs.mkdirSync(docsDir, { recursive: true });
     if (!fs.existsSync(galleryDir)) fs.mkdirSync(galleryDir, { recursive: true });
     if (!fs.existsSync(contactsDir)) fs.mkdirSync(contactsDir, { recursive: true });
+    if (!fs.existsSync(newsDir)) fs.mkdirSync(newsDir, { recursive: true });
 
     // Generate HTML files
     fs.writeFileSync(`${siteDir}/index.html`, generateIndexHtml(config));
+    fs.writeFileSync(`${newsDir}/index.html`, generateNewsHtml(config));
     fs.writeFileSync(`${docsDir}/index.html`, generateDocumentsHtml(config));
     fs.writeFileSync(`${galleryDir}/index.html`, generateGalleryHtml(config));
     fs.writeFileSync(`${contactsDir}/index.html`, generateContactsHtml(config));
